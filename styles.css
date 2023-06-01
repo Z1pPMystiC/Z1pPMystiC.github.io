@@ -42,6 +42,8 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    border: 2px solid blue;
+    overflow: auto;
 }
 .text {
     display: flex;
@@ -91,13 +93,15 @@ body {
     flex-direction: column;
 }
 .contact-info {
+    display: block;
     position: absolute;
     bottom: 0;
-    margin-bottom: 1vw;
+    margin: auto;
     width: 33%;
     display: flex;
     justify-content: space-evenly;
-    /*border: 2px solid red;*/
+    border: 2px solid red;
+    overflow: auto;
 }
 .linkedin {
     max-width: 3rem;
