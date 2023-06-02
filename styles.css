@@ -1,20 +1,10 @@
-.content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
 .header {
     display: flex;
-    position: absolute;
-    top: 2em;
+    position: fixed;
+    top: 0;
     width: 100%;
-    max-width: 600rem;
-    height: auto;
     justify-content: space-evenly;
-    align-items: center;
+    background-color:rgba(191, 172, 200, 0.7);
     /*border: 2px solid red;*/
 }
 .header-button-text {
@@ -32,7 +22,7 @@
     justify-content: center;
 }
 .personal-picture {
-    width: 50%;
+    max-width: 50%;
     height: auto;
     border-radius: 20%;
 }
@@ -42,8 +32,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: 2px solid blue;
-    overflow: auto;
+    /*border: 2px solid blue;*/
+    margin-top: 100px;
+    overflow: scroll;
 }
 .text {
     display: flex;
@@ -93,15 +84,12 @@ body {
     flex-direction: column;
 }
 .contact-info {
-    display: block;
-    position: absolute;
-    bottom: 0;
-    margin: auto;
-    width: 33%;
     display: flex;
+    width: 33%;
     justify-content: space-evenly;
-    border: 2px solid red;
-    overflow: auto;
+    /*border: 2px solid red;*/
+    position: fixed;
+    bottom: 1rem;
 }
 .linkedin {
     max-width: 3rem;
