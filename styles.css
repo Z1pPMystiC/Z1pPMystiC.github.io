@@ -34,7 +34,6 @@
     width: 100%;
     /*border: 2px solid blue;*/
     margin-top: 100px;
-    overflow: scroll;
 }
 .text {
     display: flex;
