@@ -28,5 +28,5 @@ p {
     color: #783F8E;
 }
 .text {
-    max-width: 100rem;
+    min-width: 700px;
 }
