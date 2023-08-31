@@ -86,11 +86,13 @@ body {
     color: #aaa;
     font-size: 30px;
     margin-top: 25px;
+    text-align: center;
 }
 
 .contact-paragraph-text {
     color: #aaa;
     margin-top: 25px;
+    text-align: center;
 }
 
 .link-text {
