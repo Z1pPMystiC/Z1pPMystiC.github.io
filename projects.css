@@ -7,6 +7,11 @@ body {
     font-weight: bold;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .header {
     display: flex;
     justify-content: space-between;
@@ -67,4 +72,29 @@ body {
     width: 300px;
     align-items: center;
     justify-content: center;
+}
+
+.projects-container {
+    max-width: 800px;
+}
+
+.project-title-text {
+    color: #aaa;
+    text-align: center;
+    font-size: 50px;
+}
+
+.project-subtitle-text {
+    color: #aaa;
+    font-size: 30px;
+    margin-top: 25px;
+}
+
+.project-paragraph-text {
+    color: #aaa;
+    margin-top: 25px;
+}
+
+.github-repo-link {
+    color: #aaa;
 }

@@ -77,10 +77,13 @@ body {
     max-width: 800px;
     /* border: solid; */
 }
-h1 {
+
+.about-title-text {
+    font-size: 50px;
     color: #aaa;
     text-align: center;
 }
+
 h2 {
     color: #aaa;
 }
