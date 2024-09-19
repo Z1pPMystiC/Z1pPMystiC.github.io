@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
+import Header from './components/header';
 
 const calculateAge = (birthDate: string) => {
   const today = new Date();
@@ -14,7 +15,7 @@ const calculateAge = (birthDate: string) => {
   return age;
 };
 
-const Header: React.FC = () => {
+const Name: React.FC = () => {
   const initialText = "Michail";
   const finalText = "Misho";
   const [typedText, setTypedText] = useState(initialText);
@@ -120,29 +121,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
 
-      <header className="flex items-center justify-between p-4 bg-transparent">
-        <a className="flex items-center gap-3" href="/">
-          <div className="flex items-center gap-2">
-            <Image
-              className="logo-img"
-              src="/images/pfp.png"
-              alt="Profile Picture"
-              width={40}
-              height={40}
-              priority
-            />
-            <div className="title-text text-xl font-bold">
-              Misho Metodiev
-            </div>
-          </div>
-        </a>
-        <div className="nav-buttons flex gap-4">
-          <a className="header-button-text text-lg font-bold hover:underline" href="/">Home</a>
-          <a className="header-button-text text-lg font-bold hover:underline" href="/about">About</a>
-          <a className="header-button-text text-lg font-bold hover:underline" href="/projects">Projects</a>
-          <a className="header-button-text text-lg font-bold hover:underline" href="/contact">Contact</a>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex flex-1 justify-center items-center">
         <div className="flex flex-col items-center gap-8 font-roboto">
@@ -154,7 +133,7 @@ export default function Home() {
               height={180}
               priority
             />
-            <Header />
+            <Name />
           </div>
 
           <PersonalInfo />
