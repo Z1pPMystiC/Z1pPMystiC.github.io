@@ -78,7 +78,7 @@ export default function Home() {
             />
             <div className="header-text">
               <h1 className="text-left text-4xl font-bold">
-                Hey there, I'm Misho,<br />
+                Hey there, I&apos;m Misho,<br />
                 and I am a Software Engineer.
               </h1>
             </div>

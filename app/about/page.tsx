@@ -52,7 +52,7 @@ export default function Home() {
           to display many aspects of Chicago crime in 2019 in a user-friendly layout, including a heatmap and 
           a data table, organized by data types such as location, type of crime, and age of criminal.
 
-          While we didn't end up winning anything, we all gained a lot of valuable experience with the division of responsibilities
+          While we didn&apos;t end up winning anything, we all gained a lot of valuable experience with the division of responsibilities
           among our team and constant collaboration throughout the day, and ultimately finished our project on time and to the 
           quality that we were hoping to.
         </p>
@@ -64,7 +64,7 @@ export default function Home() {
           and Independent Study Computer Science.
 
           From there, I was blessed enough to be accepted into the University of Illinois at Urbana-Champaign to continue 
-          my coding quest and pursue a bachelor's degree in Computer Science and Philosophy, where I have continued to 
+          my coding quest and pursue a bachelor&apos;s degree in Computer Science and Philosophy, where I have continued to 
           take classes and program in Java and C++, as well as learn about the philosophical foundations and applications 
           of computer science through studying the works of Alan Turing, Paul Churchland, and many other amazing philosophers 
           as they theorized the true extent of how the human brain can be applied to computers and neural networks, as well as 
@@ -75,7 +75,7 @@ export default function Home() {
         <p className="text-left mb-8">
           Today, I am continuing to program daily, working on Leetcode and side projects (like the website you are on right now) 
           to improve my programming abilities. In my free time, I also enjoy playing volleyball, both indoor and outdoor, 
-          playing guitar, working on cars, and hanging out with my friends. I can't wait for what the future has in store for me!
+          playing guitar, working on cars, and hanging out with my friends. I can&apos;t wait for what the future has in store for me!
         </p>
       </div>
 
