@@ -40,7 +40,7 @@ const Header: React.FC = () => {
         }
       } else {
         if (indexRef.current < finalText.length) {
-          setTypedText((prev) => finalText.slice(0, indexRef.current));
+          setTypedText(() => finalText.slice(0, indexRef.current));
           indexRef.current++;
           timeoutRef.current = setTimeout(typeOutText, typingSpeed);
         } else {
