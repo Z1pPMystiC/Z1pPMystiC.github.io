@@ -42,7 +42,7 @@ export default function Home() {
             <div className="max-w-3xl mx-auto px-4">
               <div className="contact-paragraph-text text-left mb-6">
                 You can also find me here. Feel free to reach out and contact me at any of the places below, 
-                I will get back to you as soon as possible. Thank you!
+                and I will get back to you as soon as possible. Thank you!
               </div>
         
               <div className="contact-subtitle-text text-left text-2xl font-bold mb-2">
