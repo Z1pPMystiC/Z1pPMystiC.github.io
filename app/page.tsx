@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 
 const calculateAge = (birthDate: string) => {
@@ -12,6 +12,84 @@ const calculateAge = (birthDate: string) => {
     age--;
   }
   return age;
+};
+
+const Header: React.FC = () => {
+  const initialText = "Michail";
+  const finalText = "Misho";
+  const [typedText, setTypedText] = useState(initialText);
+  const typingSpeed = 400; // Typing speed
+  const backspacingSpeed = 200; // Backspacing speed
+  const beginningDelay = 3000;
+
+  const indexRef = useRef(initialText.length);
+  const isBackspacingRef = useRef(true);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const typeOutText = () => {
+      if (isBackspacingRef.current) {
+        if (indexRef.current > 0) {
+          setTypedText((prev) => prev.slice(0, -1));
+          indexRef.current--;
+          timeoutRef.current = setTimeout(typeOutText, backspacingSpeed);
+        } else {
+          isBackspacingRef.current = false;
+          indexRef.current = 0;
+          timeoutRef.current = setTimeout(typeOutText, typingSpeed); // Start typing after backspacing
+        }
+      } else {
+        if (indexRef.current < finalText.length) {
+          setTypedText((prev) => finalText.slice(0, indexRef.current));
+          indexRef.current++;
+          timeoutRef.current = setTimeout(typeOutText, typingSpeed);
+        } else {
+          clearTimeout(timeoutRef.current!); // Clear timeout if done
+          return; // Stop execution if complete
+        }
+      }
+    };
+
+    const startTyping = () => {
+      timeoutRef.current = setTimeout(() => {
+        typeOutText();
+      }, beginningDelay);
+    };
+
+    startTyping();
+
+    return () => {
+      // Cleanup on unmount
+      clearTimeout(timeoutRef.current!);
+    };
+  }, [initialText, finalText, beginningDelay, typingSpeed, backspacingSpeed]);
+
+  const cursorStyle: React.CSSProperties = {
+    display: 'inline-block',
+    width: '6px',
+    backgroundColor: 'black',
+    animation: 'blink 0.7s infinite',
+    fontSize: '40px',
+    fontWeight: 'normal',
+  };
+
+  return (
+    <div className="header-text">
+      <h1 className="text-left text-4xl font-bold">
+        Hey there, I&apos;m {typedText}
+        <span style={cursorStyle}>|</span>,<br />
+        and I am a Software Engineer.
+      </h1>
+
+      <style>{`
+        @keyframes blink {
+          0% { opacity: 1; }
+          50% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
 };
 
 const PersonalInfo = () => {
@@ -76,12 +154,7 @@ export default function Home() {
               height={180}
               priority
             />
-            <div className="header-text">
-              <h1 className="text-left text-4xl font-bold">
-                Hey there, I&apos;m Misho,<br />
-                and I am a Software Engineer.
-              </h1>
-            </div>
+            <Header />
           </div>
 
           <PersonalInfo />
