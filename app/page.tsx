@@ -18,7 +18,7 @@ const calculateAge = (birthDate: string) => {
 const Name: React.FC = () => {
   const initialName = "Michail";
   const finalName = "Misho";
-  const roleTextArr = ["student.", "goalie", "guitarist", "libero", "DJ", "Software Engineer."];
+  const roleTextArr = ["student.", "goalie", "guitarist", "libero", "Software Engineer."];
 
   const [typedText, setTypedText] = useState(initialName);
   const [typedRole, setTypedRole] = useState(roleTextArr[0]); // Start with the first role already typed
@@ -132,7 +132,7 @@ const Name: React.FC = () => {
 
   return (
     <div className="header-text" style={{ position: 'relative' }}>
-      <h1 className="text-left text-2xl font-bold">
+      <h1 className="text-center sm:text-left text-2xl font-bold">
         Hey there, I&apos;m {typedText}
         {!isTypingNameDoneRef.current && (
           <>
@@ -208,7 +208,7 @@ export default function Home() {
           </div>
 
           {/* Make PersonalInfo narrower */}
-          <div className="mt-4 sm:mt-0 max-w-l w-full">
+          <div className="mt-4 sm:mt-0 max-w-2xl w-full">
             <PersonalInfo />
           </div>
         </div>
