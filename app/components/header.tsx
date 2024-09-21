@@ -15,7 +15,7 @@ const Header: React.FC = () => {
       <a className="flex items-center gap-3" href="/">
         <div className="flex items-center gap-2">
           <Image
-            className="logo-img"
+            className="logo-img rounded-md"
             src="/images/icon.jpg"
             alt="Profile Picture"
             width={40}
