@@ -199,7 +199,7 @@ export default function Home() {
               width={180}
               height={180}
               priority
-              className="w-64 h-64 sm:w-48 sm:h-48 rounded-3xl" // Increase size on larger screens
+              className="w-48 h-48 sm:w-48 sm:h-48 rounded-3xl" // Increase size on larger screens
             />
             {/* Make Name font smaller */}
             <div className="sm:ml-4 mt-4 sm:mt-0 text-center sm:text-left">
