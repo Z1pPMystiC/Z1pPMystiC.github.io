@@ -25,3 +25,22 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Valentines envelope animations */
+@keyframes flapOpen {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(150deg);
+  }
+}
+
+@keyframes envelopeDrop {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(160dvh);
+  }
+}
