@@ -22,7 +22,7 @@ export default function RejectedPage() {
           </h1>
           <p className="text-gray-600 leading-relaxed mb-6">
             I thought that spending 6-7 😂 years together would be enough to make you fall in love with me, but it seems like I was wrong.
-            I'll have to wait 365 days to try again, and I'll be thinking of you every day until then.
+            I&apos;ll have to wait 365 days to try again, and I&apos;ll be thinking of you every day until then.
           </p>
           <p className="text-gray-500 italic">
             Maybe next year? Unless you change your mind... 💙

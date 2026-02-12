@@ -21,8 +21,8 @@ export default function AcceptedPage() {
             You said yes!
           </h1>
           <p className="text-gray-700 leading-relaxed mb-6">
-            Emily, I'm so grateful to have you as my valentine. These past 6-7 😂 years have been amazing, 
-            and I'm looking forward to spending many more with you! I love you more than words can say.
+            Emily, I&apos;m so grateful to have you as my valentine. These past 6-7 😂 years have been amazing,
+            and I&apos;m looking forward to spending many more with you! I love you more than words can say.
           </p>
           <p className="text-gray-600 italic">
             Happy Valentine&apos;s Day! 💝

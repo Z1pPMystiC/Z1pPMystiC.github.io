@@ -20,7 +20,7 @@ const ADJACENT: Record<number, number[]> = {
 const SOLVED = [0, 1, 2, 3, 4, 5, EMPTY, 7, 8];
 
 function shuffleBoard(): number[] {
-  let board = [...SOLVED];
+  const board = [...SOLVED];
   let emptyPos = 6;
   for (let i = 0; i < 80; i++) {
     const neighbors = ADJACENT[emptyPos];
