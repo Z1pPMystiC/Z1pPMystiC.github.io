@@ -242,6 +242,14 @@ export default function SlidingPuzzle() {
             style={{ maxWidth: 360, touchAction: "none" }}
           >
             <div
+              className="absolute inset-2 rounded-lg"
+              style={{
+                backgroundImage: `url(/images/emilyAndMisho.jpg)`,
+                backgroundSize: "100% 100%",
+                backgroundPosition: "center",
+              }}
+            />
+            <div
               ref={gridRef}
               className={`absolute inset-2 grid grid-cols-3 grid-rows-3 gap-1 bg-gray-200 transition-opacity duration-1000 ${
                 solved ? "opacity-0 pointer-events-none" : "opacity-100"
@@ -297,14 +305,6 @@ export default function SlidingPuzzle() {
               );
               })}
             </div>
-            <div
-              className={`absolute inset-0 rounded-xl bg-cover bg-center transition-opacity duration-1000 ${
-                solved ? "opacity-100" : "opacity-0 pointer-events-none"
-              }`}
-              style={{
-                backgroundImage: `url(/images/emilyAndMisho.jpg)`,
-              }}
-            />
           </div>
 
           <div className="mt-5 w-[min(90vw,360px)]">

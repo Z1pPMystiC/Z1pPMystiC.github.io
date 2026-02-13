@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ValentinesBackground } from "../components/ValentinesBackground";
 
 const PINK_GRADIENT =
@@ -11,6 +11,27 @@ type Phase = "closed" | "opening" | "open" | "done";
 
 export default function ValentinesPage() {
   const [phase, setPhase] = useState<Phase>("closed");
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const shouldLockScroll = phase === "opening" || phase === "open";
+
+    if (shouldLockScroll) {
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+    } else {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+    }
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+    };
+  }, [phase]);
 
   function handleHeartClick() {
     if (phase !== "closed") return;
