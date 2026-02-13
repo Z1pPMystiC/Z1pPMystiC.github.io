@@ -21,7 +21,7 @@ export default function ValentinesPage() {
   // Only drop AFTER the flap is fully open
   const dropStyle =
   phase === "open"
-    ? { animation: "envelopeDrop 20s cubic-bezier(0.25, 0.8, 0.25, 1) 0.05s forwards" }
+    ? { animation: "envelopeDrop 7s cubic-bezier(0.25, 0.8, 0.25, 1) 0.05s forwards" }
     : {};
 
   return (
@@ -41,6 +41,7 @@ export default function ValentinesPage() {
                 left: 0,
                 right: 0,
                 height: "55%",
+                perspective: "800px",
                 // Keep flap visible above the card/body while dropping
                 zIndex: phase === "open" ? 5 : 15,
                 ...dropStyle,
@@ -52,6 +53,7 @@ export default function ValentinesPage() {
                 className="focus:outline-none absolute inset-0"
                 style={{
                   transformOrigin: "top center",
+                  transformStyle: "preserve-3d",
                   // Play the opening animation only during "opening"
                   animation:
                     phase === "opening"
@@ -89,6 +91,7 @@ export default function ValentinesPage() {
                     transform: "translate(-50%, 0)",
                     width: 32,
                     height: 30,
+                    backfaceVisibility: "hidden",
                     filter: "drop-shadow(0 2px 4px rgba(200,0,0,0.3))",
                   }}
                 >
