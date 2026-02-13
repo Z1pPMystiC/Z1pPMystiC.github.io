@@ -27,12 +27,20 @@ export default function AcceptedPage() {
           <p className="text-base sm:text-lg text-gray-600 italic">
             {"Happy Valentine\u2019s Day! \uD83D\uDC9D"}
           </p>
-          <Link
-            href="/valentines"
-            className="inline-flex items-center justify-center px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/60 hover:bg-white/75 text-rose-500 hover:text-rose-600 shadow-sm hover:shadow-md font-medium transition-all duration-200"
-          >
-            {"\u2190 Back"}
-          </Link>
+          <div className="flex gap-3 w-full">
+            <Link
+              href="/valentines"
+              className="inline-flex items-center justify-center w-1/3 px-3 py-2.5 sm:px-4 sm:py-3 rounded-full bg-white/60 hover:bg-white/75 text-rose-500 hover:text-rose-600 shadow-sm hover:shadow-md font-medium transition-all duration-200 text-sm sm:text-base"
+            >
+              {"\u2190 Back"}
+            </Link>
+            <Link
+              href="/prize"
+              className="inline-flex items-center justify-center w-2/3 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-rose-500 hover:bg-rose-600 text-white shadow-lg hover:shadow-xl font-medium transition-all duration-200 hover:scale-105 text-sm sm:text-base"
+            >
+              {"Claim your prize \uD83C\uDF81"}
+            </Link>
+          </div>
         </div>
       </div>
     </>
