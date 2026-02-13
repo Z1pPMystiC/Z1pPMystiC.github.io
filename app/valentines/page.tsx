@@ -147,7 +147,7 @@ export default function ValentinesPage() {
                 Yes
               </Link>
               <Link
-                href="/rejected"
+                href="/grief/denial"
                 className="px-8 py-3 sm:py-4 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-2xl transition-all duration-300 hover:scale-105"
               >
                 No

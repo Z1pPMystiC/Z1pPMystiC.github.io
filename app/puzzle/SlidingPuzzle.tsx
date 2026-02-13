@@ -228,93 +228,112 @@ export default function SlidingPuzzle() {
   }, [draggingIndex]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6">
-      <Link
-        href="/valentines"
-        className="self-start mb-4 px-6 py-3 text-rose-500 hover:text-rose-600 font-medium transition-colors"
-      >
-        ← Back
-      </Link>
-      <h1 className="text-2xl font-thin font-serif text-gray-800 mb-6">
-        {solved ? "Look, it's us! How cute! ❤️" : "First, put the pieces together!"}
-      </h1>
-      <div
-        className="relative w-[min(90vw,360px)] aspect-square rounded-xl shadow-lg overflow-hidden"
-        style={{ maxWidth: 360, touchAction: "none" }}
-      >
-        <div
-          ref={gridRef}
-          className={`absolute inset-2 grid grid-cols-3 grid-rows-3 gap-1 bg-gray-200 transition-opacity duration-1000 ${
-            solved ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
-          style={{
-            touchAction: "none",
-            WebkitUserSelect: "none",
-            userSelect: "none",
-          }}
-        >
-          {board.map((piece, index) => {
-            const isAdjacent = ADJACENT[emptyIndex].includes(index);
-            return (
+    <div className="relative min-h-[100dvh] p-6">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative flex flex-col items-center translate-y-8 sm:translate-y-10">
+          <div className="absolute bottom-full mb-4 w-[min(90vw,360px)]">
+            <h1 className="text-center text-2xl font-thin font-serif text-gray-800">
+              {solved ? "Look, it's us! How cute! \u2764\uFE0F" : "First, put the pieces together!"}
+            </h1>
+          </div>
+
+          <div
+            className="relative w-[min(90vw,360px)] aspect-square rounded-xl shadow-lg overflow-hidden"
+            style={{ maxWidth: 360, touchAction: "none" }}
+          >
             <div
-              key={index}
-              data-slot={index}
-              onClick={() => !draggingIndex && handleMove(index)}
-              onPointerDown={(e) => handleDragStart(e, index)}
-              onPointerMove={handleDragMove}
-              onPointerUp={handleDragEnd}
-              onPointerCancel={handleDragEnd}
-              onTouchStart={(e) => handleDragStart(e, index)}
-              onTouchEnd={handleDragEnd}
-              onTouchCancel={handleDragEnd}
-              className={`aspect-square rounded-lg overflow-hidden select-none ${
-                piece === EMPTY
-                  ? ""
-                  : isAdjacent
-                    ? "cursor-grab active:cursor-grabbing hover:ring-2 hover:ring-rose-400"
-                    : ""
+              ref={gridRef}
+              className={`absolute inset-2 grid grid-cols-3 grid-rows-3 gap-1 bg-gray-200 transition-opacity duration-1000 ${
+                solved ? "opacity-0 pointer-events-none" : "opacity-100"
               }`}
               style={{
-                WebkitTapHighlightColor: "transparent",
-                touchAction: "none" as const,
-                transform:
-                  draggingIndex === index
-                    ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
-                    : undefined,
-                transition: snapTarget !== null ? "transform 0.2s ease-out" : "none",
-                zIndex: draggingIndex === index ? 10 : 1,
+                touchAction: "none",
+                WebkitUserSelect: "none",
+                userSelect: "none",
               }}
             >
-              <div
-                className="w-full h-full"
-                style={{
-                  backgroundImage: `url(/images/emilyAndMisho.jpg)`,
-                  backgroundSize: "300% 300%",
-                  backgroundPosition: `${(piece % 3) * 50}% ${Math.floor(piece / 3) * 50}%`,
-                  opacity: piece === EMPTY ? 0 : 1,
-                }}
-              />
+              {board.map((piece, index) => {
+                const isAdjacent = ADJACENT[emptyIndex].includes(index);
+                return (
+                <div
+                  key={index}
+                  data-slot={index}
+                  onClick={() => !draggingIndex && handleMove(index)}
+                  onPointerDown={(e) => handleDragStart(e, index)}
+                  onPointerMove={handleDragMove}
+                  onPointerUp={handleDragEnd}
+                  onPointerCancel={handleDragEnd}
+                  onTouchStart={(e) => handleDragStart(e, index)}
+                  onTouchEnd={handleDragEnd}
+                  onTouchCancel={handleDragEnd}
+                  className={`aspect-square rounded-lg overflow-hidden select-none ${
+                    piece === EMPTY
+                      ? ""
+                      : isAdjacent
+                        ? "cursor-grab active:cursor-grabbing hover:ring-2 hover:ring-rose-400"
+                        : ""
+                  }`}
+                  style={{
+                    WebkitTapHighlightColor: "transparent",
+                    touchAction: "none" as const,
+                    transform:
+                      draggingIndex === index
+                        ? `translate3d(${dragOffset.x}px, ${dragOffset.y}px, 0)`
+                        : undefined,
+                    transition: snapTarget !== null ? "transform 0.2s ease-out" : "none",
+                    zIndex: draggingIndex === index ? 10 : 1,
+                  }}
+                >
+                  <div
+                    className="w-full h-full"
+                    style={{
+                      backgroundImage: `url(/images/emilyAndMisho.jpg)`,
+                      backgroundSize: "300% 300%",
+                      backgroundPosition: `${(piece % 3) * 50}% ${Math.floor(piece / 3) * 50}%`,
+                      opacity: piece === EMPTY ? 0 : 1,
+                    }}
+                  />
+                </div>
+              );
+              })}
             </div>
-          );
-          })}
+            <div
+              className={`absolute inset-0 rounded-xl bg-cover bg-center transition-opacity duration-1000 ${
+                solved ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+              style={{
+                backgroundImage: `url(/images/emilyAndMisho.jpg)`,
+              }}
+            />
+          </div>
+
+          <div className="mt-5 w-[min(90vw,360px)]">
+            {!solved ? (
+              <Link
+                href="/valentines"
+                className="inline-flex w-full items-center justify-center px-6 py-3 rounded-full bg-white/60 hover:bg-white/75 text-rose-500 hover:text-rose-600 shadow-sm hover:shadow-md font-medium transition-all duration-200"
+              >
+                {"\u2190 Back"}
+              </Link>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  href="/valentines"
+                  className="inline-flex w-full items-center justify-center px-4 py-3 rounded-full bg-white/60 hover:bg-white/75 text-rose-500 hover:text-rose-600 shadow-sm hover:shadow-md font-medium transition-all duration-200"
+                >
+                  {"\u2190 Back"}
+                </Link>
+                <Link
+                  href="/accepted"
+                  className="inline-flex w-full items-center justify-center px-4 py-3 rounded-full bg-rose-500 hover:bg-rose-600 text-white shadow-sm hover:shadow-md font-medium transition-all duration-200"
+                >
+                  {"Continue \u2192"}
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
-        <div
-          className={`absolute inset-0 rounded-xl bg-cover bg-center transition-opacity duration-1000 ${
-            solved ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-          style={{
-            backgroundImage: `url(/images/emilyAndMisho.jpg)`,
-          }}
-        />
       </div>
-      {solved && (
-        <Link
-          href="/accepted"
-          className="mt-8 px-8 py-4 bg-rose-500 hover:bg-rose-600 text-white font-medium rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-        >
-          Continue →
-        </Link>
-      )}
     </div>
   );
 }
