@@ -1,11 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ValentinesBackground } from "./ValentinesBackground";
 
 const GRAY_GRADIENT = "linear-gradient(135deg, #f8f4f5 0%, #ede8ea 50%, #e5dfe2 100%)";
 
 type GriefStageCardProps = {
-  title: string;
   message: string;
   note: string;
   continueHref: string;
@@ -13,7 +11,6 @@ type GriefStageCardProps = {
 };
 
 export default function GriefStageCard({
-  title,
   message,
   note,
   continueHref,

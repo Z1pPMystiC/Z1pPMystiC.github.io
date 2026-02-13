@@ -22,7 +22,7 @@ export default function RejectedPage() {
           </h1>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
             I thought that spending 6-7 😂 years together would be enough to make you fall in love with me, but it seems like I was wrong.
-            I&apos;ll always cherish our past Valentine's Day memories.
+            I&apos;ll always cherish our past Valentine&apos;s Day memories.
           </p>
           <p className="text-base sm:text-lg text-gray-500 italic">
             {"Maybe next year? \uD83D\uDC99"} <br /> 
@@ -39,3 +39,4 @@ export default function RejectedPage() {
     </>
   );
 }
+

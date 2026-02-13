@@ -186,7 +186,7 @@ export default function SlidingPuzzle() {
         }, 200);
       }
     },
-    [draggingIndex, emptyIndex, handleMove]
+    [draggingIndex, handleMove]
   );
 
   useEffect(() => {

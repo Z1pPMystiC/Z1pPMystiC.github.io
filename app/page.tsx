@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Header from './components/header';
 
+const ROLE_TEXT_ARR = ["student.", "goalie", "guitarist", "libero", "Software Engineer."];
+
 const calculateAge = (birthDate: string) => {
   const today = new Date();
   const birth = new Date(birthDate);
@@ -18,10 +20,9 @@ const calculateAge = (birthDate: string) => {
 const Name: React.FC = () => {
   const initialName = "Michail";
   const finalName = "Misho";
-  const roleTextArr = ["student.", "goalie", "guitarist", "libero", "Software Engineer."];
 
   const [typedText, setTypedText] = useState(initialName);
-  const [typedRole, setTypedRole] = useState(roleTextArr[0]); // Start with the first role already typed
+  const [typedRole, setTypedRole] = useState(ROLE_TEXT_ARR[0]); // Start with the first role already typed
   const [isTypingRole, setIsTypingRole] = useState(false); // Tracks whether we're typing the role
   const [showCursorAtEnd, setShowCursorAtEnd] = useState(false); // Tracks if the cursor should stay at the end of the final role
 
@@ -34,7 +35,7 @@ const Name: React.FC = () => {
   const beginningDelay = 2000;
 
   const nameIndexRef = useRef(initialName.length); // Start with full initial name
-  const roleIndexRef = useRef(roleTextArr[0].length); // Role typing progress, starting with the first role already typed
+  const roleIndexRef = useRef(ROLE_TEXT_ARR[0].length); // Role typing progress, starting with the first role already typed
   const roleArrIndexRef = useRef(0); // Which role to type
   const isBackspacingRef = useRef(false); // Is backspacing the name/role?
   const isTypingNameDoneRef = useRef(false); // Has the final name "Misho" been typed?
@@ -68,14 +69,14 @@ const Name: React.FC = () => {
     };
 
     const typeOutRole = () => {
-      if (roleIndexRef.current < roleTextArr[roleArrIndexRef.current].length) {
+      if (roleIndexRef.current < ROLE_TEXT_ARR[roleArrIndexRef.current].length) {
         setTypedRole(
-          roleTextArr[roleArrIndexRef.current].slice(0, roleIndexRef.current + 1)
+          ROLE_TEXT_ARR[roleArrIndexRef.current].slice(0, roleIndexRef.current + 1)
         ); // Type each character of the role
         roleIndexRef.current++;
         timeoutRef.current = setTimeout(typeOutRole, roleTypingSpeed);
       } else {
-        if (roleArrIndexRef.current === roleTextArr.length - 1) {
+        if (roleArrIndexRef.current === ROLE_TEXT_ARR.length - 1) {
           // When the last role is fully typed, stop
           clearTimeout(timeoutRef.current!);
           setShowCursorAtEnd(true); // Show the cursor at the end of the final role
