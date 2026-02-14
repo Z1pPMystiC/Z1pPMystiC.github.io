@@ -21,12 +21,10 @@ export default function RejectedPage() {
             Okay...
           </h1>
           <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-            I thought that spending 6-7 😂 years together would be enough to make you fall in love with me, but it seems like I was wrong.
-            I&apos;ll always cherish our past Valentine&apos;s Day memories.
+            Another message that only she can read because of our inside jokes lol.
           </p>
           <p className="text-base sm:text-lg text-gray-500 italic">
-            {"Maybe next year? \uD83D\uDC99"} <br /> 
-            {"Unless you change your mind..."}
+            {"Maybe next year? \uD83D\uDC99"}
           </p>
           <Link
             href="/valentines"

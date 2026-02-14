@@ -8,12 +8,7 @@ const PINK_GRADIENT =
   "linear-gradient(135deg, #fff5f7 0%, #ffe4ec 50%, #ffd1dc 100%)";
 
 const PRIZES = [
-  "A homemade steak dinner",
-  "Bubble bath for two",
-  "Thai dinner night out",
-  "Mall shopping trip",
-  "PJ movie night with snacks",
-  "Lots of cuddles and kisses",
+  "There were randomized prizes here",
 ];
 
 function getRandomPrize() {

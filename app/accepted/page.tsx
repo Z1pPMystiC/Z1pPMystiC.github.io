@@ -21,8 +21,7 @@ export default function AcceptedPage() {
             You said yes!
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-            Emily, I&apos;m so grateful to have you as my valentine. These past 6-7 😂 years have been amazing,
-            and I&apos;m looking forward to spending many more with you! I love you more than words can say.
+            There was a heartfelt message here that only she can read.
           </p>
           <p className="text-base sm:text-lg text-gray-600 italic">
             {"Happy Valentine\u2019s Day! \uD83D\uDC9D"}
