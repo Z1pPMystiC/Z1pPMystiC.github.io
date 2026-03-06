@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 import Header from './components/header';
 
-const ROLE_TEXT_ARR = ["student.", "goalie", "guitarist", "libero", "Software Engineer."];
+const ROLE_TEXT_ARR = ["guitarist.", "goalie", "gamer", "libero", "Software Engineer."];
 
 const calculateAge = (birthDate: string) => {
   const today = new Date();
@@ -177,8 +177,9 @@ const PersonalInfo = () => {
   return (
     <div className="paragraph-text text-center">
       <p>
-        I am {age} years old and studying Computer Science and Philosophy 
-        at the University of Illinois at Urbana-Champaign.
+        I am {age} years old with a B.S. in Computer Science and Philosophy 
+        from the University of Illinois at Urbana-Champaign. Currently living in 📍Atlanta, GA.
+        <br />
         I enjoy coding, problem solving, and playing volleyball. Feel free to contact me!
       </p>
     </div>
