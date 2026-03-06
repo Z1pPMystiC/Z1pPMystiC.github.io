@@ -814,7 +814,7 @@ function LessonScreen({
 // ─── Result Screen ────────────────────────────────────────────────────────────
 
 function ResultScreen({
-  lesson,
+  lesson: _lesson,
   score,
   total,
   onHome,
