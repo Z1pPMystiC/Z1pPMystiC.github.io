@@ -22,67 +22,64 @@ const Name: React.FC = () => {
   const finalName = "Misho";
 
   const [typedText, setTypedText] = useState(initialName);
-  const [typedRole, setTypedRole] = useState(ROLE_TEXT_ARR[0]); // Start with the first role already typed
-  const [isTypingRole, setIsTypingRole] = useState(false); // Tracks whether we're typing the role
-  const [showCursorAtEnd, setShowCursorAtEnd] = useState(false); // Tracks if the cursor should stay at the end of the final role
+  const [typedRole, setTypedRole] = useState(ROLE_TEXT_ARR[0]);
+  const [isTypingRole, setIsTypingRole] = useState(false);
+  const [showNameCursor, setShowNameCursor] = useState(true);
 
-  const typingSpeed = 150; // Typing speed for name
-  const backspacingSpeed = 100; // Backspacing speed
+  const typingSpeed = 150;
+  const backspacingSpeed = 100;
   const cursorChangeDelay = 1500;
-  const roleTypingSpeed = 100; // Typing speed for role
-  const roleBackspacingSpeed = 100; // Backspacing speed for role
-  const delayBetweenRoles = 1000; // Delay between typing out roles
+  const roleTypingSpeed = 100;
+  const roleBackspacingSpeed = 100;
+  const delayBetweenRoles = 1000;
   const beginningDelay = 2000;
 
-  const nameIndexRef = useRef(initialName.length); // Start with full initial name
-  const roleIndexRef = useRef(ROLE_TEXT_ARR[0].length); // Role typing progress, starting with the first role already typed
-  const roleArrIndexRef = useRef(0); // Which role to type
-  const isBackspacingRef = useRef(false); // Is backspacing the name/role?
-  const isTypingNameDoneRef = useRef(false); // Has the final name "Misho" been typed?
+  const nameIndexRef = useRef(initialName.length);
+  const roleIndexRef = useRef(ROLE_TEXT_ARR[0].length);
+  const roleArrIndexRef = useRef(0);
+  const isBackspacingRef = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const typeOutName = () => {
       if (isBackspacingRef.current) {
         if (nameIndexRef.current > 0) {
-          setTypedText((prev) => prev.slice(0, -1)); // Backspace the name
+          setTypedText((prev) => prev.slice(0, -1));
           nameIndexRef.current--;
           timeoutRef.current = setTimeout(typeOutName, backspacingSpeed);
         } else {
-          // Once name is fully backspaced, start typing "Misho"
           isBackspacingRef.current = false;
           timeoutRef.current = setTimeout(typeOutName, typingSpeed);
         }
       } else {
         if (nameIndexRef.current < finalName.length) {
-          setTypedText(finalName.slice(0, nameIndexRef.current + 1)); // Type final name
+          setTypedText(finalName.slice(0, nameIndexRef.current + 1));
           nameIndexRef.current++;
           timeoutRef.current = setTimeout(typeOutName, typingSpeed);
-        } else {
-          timeoutRef.current = setTimeout(() => {
-            isTypingNameDoneRef.current = true;
-            setIsTypingRole(true); // Start typing roles, cursor will move to roles
-            timeoutRef.current = setTimeout(typeOutRole, delayBetweenRoles); // Start typing role
-          }, cursorChangeDelay);
         }
+        // done — showNameCursor stays true, cursor blinks after "Misho"
       }
+    };
+
+    const startNameAnimation = () => {
+      setShowNameCursor(true);
+      isBackspacingRef.current = true;
+      timeoutRef.current = setTimeout(typeOutName, backspacingSpeed);
     };
 
     const typeOutRole = () => {
       if (roleIndexRef.current < ROLE_TEXT_ARR[roleArrIndexRef.current].length) {
         setTypedRole(
           ROLE_TEXT_ARR[roleArrIndexRef.current].slice(0, roleIndexRef.current + 1)
-        ); // Type each character of the role
+        );
         roleIndexRef.current++;
         timeoutRef.current = setTimeout(typeOutRole, roleTypingSpeed);
       } else {
         if (roleArrIndexRef.current === ROLE_TEXT_ARR.length - 1) {
-          // When the last role is fully typed, stop
-          clearTimeout(timeoutRef.current!);
-          setShowCursorAtEnd(true); // Show the cursor at the end of the final role
-          setIsTypingRole(false); // Stop showing cursor for roles
+          // Last role done — hand off to name animation
+          setIsTypingRole(false);
+          timeoutRef.current = setTimeout(startNameAnimation, cursorChangeDelay);
         } else {
-          // Backspace the role after a delay
           timeoutRef.current = setTimeout(backspaceRole, delayBetweenRoles);
         }
       }
@@ -90,26 +87,21 @@ const Name: React.FC = () => {
 
     const backspaceRole = () => {
       if (roleIndexRef.current > 0) {
-        setTypedRole((prev) => prev.slice(0, -1)); // Backspace the role
+        setTypedRole((prev) => prev.slice(0, -1));
         roleIndexRef.current--;
         timeoutRef.current = setTimeout(backspaceRole, roleBackspacingSpeed);
       } else {
-        roleArrIndexRef.current++; // Move to the next role
+        roleArrIndexRef.current++;
         timeoutRef.current = setTimeout(typeOutRole, typingSpeed);
       }
     };
 
-    const startTyping = () => {
-      // Start by backspacing the initial name
-      isBackspacingRef.current = true;
-      timeoutRef.current = setTimeout(typeOutName, typingSpeed);
-    };
-    
-    const startDelay = () => {
-      timeoutRef.current = setTimeout(startTyping, beginningDelay);
-    };
-    
-    startDelay();
+    // Start: hide name cursor, show role cursor, begin cycling roles
+    timeoutRef.current = setTimeout(() => {
+      setShowNameCursor(false);
+      setIsTypingRole(true);
+      timeoutRef.current = setTimeout(typeOutRole, delayBetweenRoles);
+    }, beginningDelay);
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -135,7 +127,7 @@ const Name: React.FC = () => {
     <div className="header-text" style={{ position: 'relative' }}>
       <h1 className="text-center sm:text-left text-2xl font-bold">
         Hey there, I&apos;m {typedText}
-        {!isTypingNameDoneRef.current && (
+        {showNameCursor && (
           <>
             <span style={cursorStyle}>|</span>
             <span style={cursorPlaceholderStyle} />
@@ -149,7 +141,6 @@ const Name: React.FC = () => {
             <span style={cursorPlaceholderStyle} />
           </>
         )}
-        {showCursorAtEnd && <span style={cursorStyle}>|</span>}
       </h1>
 
       <style>{`
@@ -177,10 +168,9 @@ const PersonalInfo = () => {
   return (
     <div className="paragraph-text text-center">
       <p>
-        I am {age} years old with a B.S. in Computer Science and Philosophy 
-        from the University of Illinois at Urbana-Champaign. Currently living in 📍Atlanta, GA.
-        <br />
-        I enjoy coding, problem solving, and playing volleyball. Feel free to contact me!
+        I am {age} years old, holding a B.S. in Computer Science and Philosophy
+        from the University of Illinois at Urbana-Champaign, and currently based in Atlanta, GA.
+        I enjoy coding, problem solving, and playing volleyball. Feel free to reach out!
       </p>
     </div>
   );
