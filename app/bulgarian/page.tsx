@@ -814,7 +814,6 @@ function LessonScreen({
 // ─── Result Screen ────────────────────────────────────────────────────────────
 
 function ResultScreen({
-  lesson: _lesson,
   score,
   total,
   onHome,
@@ -894,7 +893,7 @@ export default function BulgarianPage() {
     setLastScore({ score, total });
     const pct = Math.round((score / total) * 100);
     if (pct >= 70) {
-      setCompletedLessons((prev) => new Set([...prev, lessonId]));
+      setCompletedLessons((prev) => { const next = new Set(prev); next.add(lessonId); return next; });
     }
     setScreen("result");
   };
